@@ -34,22 +34,27 @@ Node Exporter collects system metrics and exposes them for Prometheus.
    tar xvfz node_exporter-1.9.1.linux-amd64.tar.gz
    cd node_exporter-1.9.1.linux-amd64
    ```
+   ![IMG](https://github.com/divyanshsaxena002/Monitoring-Stack-with-Node-Exporter-Prometheus-and-Grafana/blob/main/img/img1.png)
+   ![IMG](https://github.com/divyanshsaxena002/Monitoring-Stack-with-Node-Exporter-Prometheus-and-Grafana/blob/main/img/img2.png)
+   ![IMG](https://github.com/divyanshsaxena002/Monitoring-Stack-with-Node-Exporter-Prometheus-and-Grafana/blob/main/img/img3.png)
 
-2. **Run Node Exporter**:
+3. **Run Node Exporter**:
    ```bash
    ./node_exporter
    ```
    - Node Exporter will be running on `http://localhost:9100`. 🌐
+   - ![IMG](https://github.com/divyanshsaxena002/Monitoring-Stack-with-Node-Exporter-Prometheus-and-Grafana/blob/main/img/img4.png)
 
-3. **Verify Metrics**:
+4. **Verify Metrics**:
    - Open [http://localhost:9100/metrics](http://localhost:9100/metrics) in your browser. 🌐
    - Or use `curl` to verify:
      ```bash
      curl http://localhost:9100/metrics
-     curl http://localhost:9100/metrics | grep "node_"
+     
      ```
+     ![IMG](https://github.com/divyanshsaxena002/Monitoring-Stack-with-Node-Exporter-Prometheus-and-Grafana/blob/main/img/img5.png)
 
-4. **Note the WSL IP (if needed)**:
+5. **Note the WSL IP (if needed)**:
    If Prometheus is outside WSL, get the WSL IP using:
    ```bash
    hostname -I
@@ -95,7 +100,7 @@ Prometheus scrapes metrics from Node Exporter and Grafana visualizes them.
    ```bash
    docker-compose up -d
    ```
-
+![IMG](![IMG](https://github.com/divyanshsaxena002/Monitoring-Stack-with-Node-Exporter-Prometheus-and-Grafana/blob/main/img/img6.png))
 4. **Verify Prometheus**:
    - Open [http://localhost:9090](http://localhost:9090) in your browser. 🌐
    - Check that Node Exporter is `UP` under **Status → Targets**. ✅
@@ -109,19 +114,21 @@ Grafana provides the visualization layer for metrics collected by Prometheus.
 1. **Access Grafana**:
    Open [http://localhost:3000](http://localhost:3000) in your browser. 🌐
    - Default login: `admin` / `admin`
-
+![IMG](https://github.com/divyanshsaxena002/Monitoring-Stack-with-Node-Exporter-Prometheus-and-Grafana/blob/main/img/Grafana%20dashboard.png)
 2. **Add Prometheus Data Source**:
    - Go to **Configuration → Data Sources → Add Prometheus**.
    - Set the URL to `http://prometheus:9090` (or use `http://<Prometheus_IP>:9090` if Prometheus is not running in Docker).
+   - ![IMG](https://github.com/divyanshsaxena002/Monitoring-Stack-with-Node-Exporter-Prometheus-and-Grafana/blob/main/img/prometheus.png)
 
 3. **Import Node Exporter Dashboard**:
-   - Go to **Create (+) → Import → Dashboard ID `1860`**  
+   - Go to **Create (+) → Import → Dashboard ID `1860`**
+     ![IMG](https://github.com/divyanshsaxena002/Monitoring-Stack-with-Node-Exporter-Prometheus-and-Grafana/blob/main/img/import.png)
      (or download the [Node Exporter Full Dashboard](http://localhost:3000/d/rYdddlPWk/node-exporter-full?orgId=1&from=now-24h&to=now&timezone=browser&var-datasource=default&var-job=&var-nodename=&var-node=&var-diskdevices=%5Ba-z%5D%2B%7Cnvme%5B0-9%5D%2Bn%5B0-9%5D%2B%7Cmmcblk%5B0-9%5D%2B&refresh=1m)).
    - Select **Prometheus** as the data source and click **Import**.
 
 4. **View Metrics**:
    The imported dashboard will display CPU, memory, disk, and network metrics. 📉
-
+![IMG](https://github.com/divyanshsaxena002/Monitoring-Stack-with-Node-Exporter-Prometheus-and-Grafana/blob/main/img/import1.png)
 ---
 
 ## **Troubleshooting** ⚠️
